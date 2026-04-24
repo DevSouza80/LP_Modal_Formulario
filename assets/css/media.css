@@ -72,4 +72,23 @@
    flex-direction: column;
 }
 }
+
+@media screen and (max-width:520px){
+   .modal-form {
+    display: none;
+    width: 90%;
+    max-width: 480px;
+    border-radius: 5px;
+    padding:40px;
+    height: 600px;
+    border: 1px solid var(--color-tree);
+    box-shadow: 0 4px 12px var( --color-thirteen);
+    background-color:var(--color-ten);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+}
+}
 /**/
