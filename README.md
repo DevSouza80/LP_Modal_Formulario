@@ -1,109 +1,99 @@
-📄 README — Sistema de Cadastro com Modal (Axis Empreendimentos)
+📄 Sistema de Cadastro com Modal — Axis Empreendimentos
+
 📌 Descrição
 
-Este projeto é uma landing page interativa com formulário de cadastro em modal, onde os dados inseridos pelo usuário são validados no front-end e enviados para um servidor PHP, sendo então armazenados em um banco de dados MySQL.
+Este projeto consiste em uma landing page com um formulário de cadastro exibido em modal. O sistema permite que usuários insiram seus dados pessoais e tenham essas informações processadas e armazenadas em um banco de dados MySQL através de PHP.
 
-O sistema simula um fluxo real de captura de leads (cadastro de clientes).
+A aplicação simula um fluxo simples de captura de leads, com validação de dados no lado do cliente e persistência no servidor.
 
-⚙️ Tecnologias utilizadas
-HTML5 → estrutura da página
-CSS3 → estilização (arquivos próprios)
-JavaScript / jQuery → interações e validações
-PHP (MySQLi) → processamento do formulário
-MySQL → banco de dados
-XAMPP → ambiente local de desenvolvimento
+⚙️ Tecnologias Utilizadas
+HTML5
+CSS3
+JavaScript (jQuery)
+PHP (MySQLi)
+MySQL
 
 🧩 Estrutura do Projeto
-/projeto
-│
-├── index.html              # Página principal com formulário
-├── cadastro.php            # Processa e salva os dados
-├── conexao.php             # Conexão com banco de dados
-│
-├── /assets
-│   ├── /css
-│   ├── /js
-│   ├── /img
-│   └── /jquery
-🧠 Funcionamento do Sistema
-1. 📥 Abertura do formulário
-O usuário clica no botão "Começar agora"
-Um modal é exibido com o formulário
-$('.btn').click(function(){
-    $('.modal-form').fadeIn();
-});
-2. ✅ Validação dos dados (JavaScript)
+/
+├── index.html
+├── cadastro.php
+├── conexao.php
+└── assets/
+    ├── css/
+    ├── js/
+    ├── img/
+    └── jquery/
+    
+🖥️ Interface
 
-Antes de enviar, o sistema valida:
+A página principal apresenta uma seção de destaque com um botão de ação. Ao clicar nesse botão, um modal é exibido contendo o formulário de cadastro.
 
-Nome completo (nome + sobrenome com letras maiúsculas/minúsculas)
-Telefone no formato (XX) XXXXX-XXXX
-Email válido
+O formulário solicita os seguintes dados:
 
-Exemplo:
+Nome completo
+Email
+Telefone
 
-if(verificarEmail(email) == false) {
-    aplicarCampoInvalido($('input[name=email]'));
-    return false;
-}
+🔄 Fluxo do Sistema
+1. Abertura do Modal
 
-Se algum campo estiver inválido:
+O modal é acionado através de um botão na interface. A exibição é controlada via jQuery, permitindo uma interação dinâmica sem recarregar a página.
 
-O campo fica vermelho
-O envio é bloqueado
-3. 📤 Envio do formulário
+2. Validação dos Dados
 
-Se tudo estiver correto:
+Antes do envio, os dados inseridos são validados no front-end com JavaScript:
 
-<form action="cadastro.php" method="POST">
+Nome: deve conter pelo menos dois nomes e seguir um padrão de escrita
+Telefone: validado com base em um formato específico (XX) XXXXX-XXXX
+Email: validado com expressão regular
 
-Os dados são enviados via POST para o arquivo cadastro.php.
+Caso algum campo esteja inválido:
 
-4. ⚙️ Processamento no PHP
+O campo é destacado visualmente
+O envio do formulário é interrompido
+3. Envio do Formulário
 
-O arquivo cadastro.php:
+Após a validação, os dados são enviados via método POST para o arquivo responsável pelo processamento no servidor.
 
-require_once('conexao.php');
+4. Processamento no Servidor
 
-if(isset($_POST['acao'])){
-Recebe os dados do formulário
-Monta a query SQL
-Insere no banco
-$sql = "INSERT INTO clientes (nome, email, telefone) 
-VALUES ('$nome', '$email', '$telefone')";
+O arquivo responsável pelo processamento recebe os dados enviados e realiza a inserção no banco de dados.
 
-5. 🗄️ Conexão com banco
+Os dados capturados incluem:
 
-Arquivo conexao.php:
+Nome
+Email
+Telefone
 
-$conexao=mysqli_connect("localhost","root","","cadastro");
-Conecta ao banco MySQL
-Interrompe execução em caso de erro
+Essas informações são utilizadas para montar uma instrução SQL de inserção.
 
-🗃️ Estrutura do Banco de Dados
+5. Conexão com o Banco de Dados
 
-Banco: cadastro
+A conexão com o banco é realizada em um arquivo separado, responsável por estabelecer a comunicação com o MySQL.
 
-Tabela: clientes
+Caso ocorra falha na conexão, a execução é interrompida.
 
-CREATE TABLE clientes (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    nome VARCHAR(255),
-    email VARCHAR(255),
-    telefone VARCHAR(20)
-);
+🗄️ Banco de Dados
 
-🧠 Conclusão
+O sistema utiliza um banco de dados contendo uma tabela responsável por armazenar os registros de cadastro.
 
-Este projeto implementa com sucesso:
+Estrutura da tabela:
+id (chave primária, auto incremento)
+nome
+email
+telefone
 
-Interface moderna com modal
-Validação de formulário no front-end
-Integração com PHP
-Persistência de dados em MySQL
+🧠 Funcionamento Geral
 
-É uma ótima base para:
+O sistema segue um fluxo simples e funcional:
 
-sistemas de cadastro
-landing pages
-captura de leads
+O usuário acessa a página
+Abre o formulário em modal
+Preenche os dados
+O sistema valida as informações no navegador
+Os dados são enviados ao servidor
+O PHP processa e armazena no banco
+Uma mensagem de retorno é exibida
+
+👨‍💻 Autor
+Desenvolvido por Pedro Souza 🚀
