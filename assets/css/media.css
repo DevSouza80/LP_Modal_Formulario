@@ -35,6 +35,12 @@
     }
 }
 
+@media screen and (max-width:768px) {
+    .wrapper-center {
+        top:350px;
+    }
+}
+
 @media screen and (max-width:660px) {
 
     .title-hero h1 {
@@ -116,13 +122,12 @@
     }
 
     .title-hero p {
-    font-size: 1rem;
-    font-family: var(--font-poppins);
-    max-width: 400px;
-    margin: 0 auto;
-    line-height:30px;
-    margin-bottom: 1rem;
-}
+        font-size: 1rem;
+        max-width: 400px;
+        margin: 0 auto;
+        line-height:30px;
+        margin-bottom: 1rem;
+    }
 
      .modal-form {
         display: none;
