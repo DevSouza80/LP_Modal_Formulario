@@ -26,7 +26,7 @@ MySQL
     
 🖥️ Interface
 
-![Preview do sistema](./assets/img/project.png)
+![Preview do sistema](./assets/img/Project.png)
 
 A página principal apresenta uma seção de destaque com um botão de ação. Ao clicar nesse botão, um modal é exibido contendo o formulário de cadastro.
 
